@@ -1,0 +1,79 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 15px 30px;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #b4b04d;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* Navbar links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav link style */
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #facc15; /* hover yellow */
+}
+
+/* Greeting text (Hello, User) */
+.nav-links li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+/* Logout button */
+.nav-links button {
+  background: #ef4444; /* red */
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.nav-links button:hover {
+  background: #dc2626; /* dark red */
+}
+
+/* Responsive - Mobile view */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}

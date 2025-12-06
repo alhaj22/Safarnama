@@ -1,0 +1,98 @@
+/* Full page dark background */
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: "Segoe UI", sans-serif;
+  color: #f1f5f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center form container */
+form {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 30px;
+  background: rgba(30, 41, 59, 0.8); /* glass effect */
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: fadeIn 0.8s ease-in-out;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+}
+
+/* Input fields */
+form input {
+  padding: 12px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  background: #1e293b;
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+form input::placeholder {
+  color: #94a3b8;
+}
+
+form input:focus {
+  border-color: #6366f1; /* indigo */
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  transform: scale(1.03);
+}
+
+/* Button style */
+form button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #4338ca);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #4f46e5, #3730a3);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.6);
+}
+
+/* Small heading on top of form */
+form::before {
+  content: attr(data-title);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+  display: block;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  form {
+    width: 90%;
+    margin: 50px auto;
+    padding: 25px;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "treks": [
+    {
+      "id": "2",
+      "name": "Chembra Peak",
+      "location": "Wayanad",
+      "duration": "1 day",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "1642",
+      "name": "kedarkantha",
+      "location": "uttrakhand",
+      "duration": "15 days",
+      "difficulty": "medium"
+    }
+  ],
+  "users": []
+}

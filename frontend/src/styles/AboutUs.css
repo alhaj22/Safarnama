@@ -1,0 +1,156 @@
+.about-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #0b0f19;
+  color: white;
+  padding-bottom: 60px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* TOP HERO */
+.about-hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+    center/cover no-repeat;
+  backdrop-filter: blur(4px);
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.about-hero p {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+/* MAIN CONTENT */
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 80px;
+  gap: 40px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.about-image img {
+  width: 420px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* STATS */
+.stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+.stat-box {
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  padding: 25px 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-box h3 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  color: #00d9ff;
+}
+
+/* Mission Vision */
+.mission-vision {
+  display: flex;
+  gap: 30px;
+  padding: 0 80px;
+}
+
+.mv-card {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.mv-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #00eaff;
+}
+
+.mv-card p {
+  opacity: 0.8;
+}
+
+/* TEAM */
+.team-section {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.team-card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  width: 220px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.team-card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.team-card h4 {
+  margin-bottom: 5px;
+}
+
+.team-card p {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .mission-vision {
+    flex-direction: column;
+  }
+  .team-grid {
+    flex-direction: column;
+  }
+}

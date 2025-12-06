@@ -1,0 +1,98 @@
+/* Container */
+.dashboard-container {
+  min-height: 100vh;
+  background: #0f172a;
+  color: #f1f5f9;
+  padding: 20px 40px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Header */
+.dashboard-container h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #f1f5f9;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  margin: 0 8px;
+  padding: 10px 20px;
+  background: #334155;
+  color: #f1f5f9;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tabs button.active {
+  background: #1e293b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tabs button:hover {
+  background: #475569;
+}
+
+/* Tables */
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.dashboard-table th {
+  background: #1e293b;
+  color: #f1f5f9;
+  font-size: 0.95rem;
+}
+
+.dashboard-table tr:nth-child(even) {
+  background: #152238;
+}
+
+.dashboard-table tr:hover {
+  background: #1f2a44;
+  transition: background 0.3s;
+}
+
+.dashboard-table img {
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tabs button {
+    margin: 6px 0;
+  }
+
+  .dashboard-table th,
+  .dashboard-table td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
