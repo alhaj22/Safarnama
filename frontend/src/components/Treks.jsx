@@ -5,10 +5,13 @@ export default function Trips() {
   const [treks, setTreks] = useState([]);
   const [user, setUser] = useState(null);
 
+  // Base API URL from .env
+  const API_URL = import.meta.env.VITE_API_URL;
+
   // Admin input states
   const [newTrek, setNewTrek] = useState({ title: "", desc: "", img: "" });
 
-  // ✅ Edit mode states
+  // Edit mode states
   const [editMode, setEditMode] = useState(false);
   const [editTrek, setEditTrek] = useState({
     _id: "",
@@ -23,35 +26,41 @@ export default function Trips() {
     fetchTreks();
   }, []);
 
+  // Fetch all treks
   const fetchTreks = async () => {
-    const res = await fetch("http://localhost:5001/api/treks");
+    const res = await fetch(`${API_URL}/api/treks`);
     const data = await res.json();
     setTreks(data);
   };
 
+  // Book trek
   const handleBook = async (id) => {
     if (!user) {
       alert("Please login to book a trek!");
       return;
     }
+
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:5001/api/bookings", {
+
+    const res = await fetch(`${API_URL}/api/bookings`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify({ trekId: id }),
     });
+
     if (res.ok) alert("Booking successful!");
   };
 
-  // ----------------- Admin CRUD -----------------
+  // CRUD Operations (Admin)
   const token = localStorage.getItem("token");
 
   const handleAdd = async () => {
-    const res = await fetch("http://localhost:5001/api/treks", {
+    const res = await fetch(`${API_URL}/api/treks`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: token },
       body: JSON.stringify(newTrek),
     });
+
     if (res.ok) {
       alert("Trek added");
       setNewTrek({ title: "", desc: "", img: "" });
@@ -60,39 +69,37 @@ export default function Trips() {
   };
 
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:5001/api/treks/${id}`, {
+    const res = await fetch(`${API_URL}/api/treks/${id}`, {
       method: "DELETE",
       headers: { Authorization: token },
     });
+
     if (res.ok) {
       alert("Trek deleted");
       fetchTreks();
     }
   };
 
-  // ✅ Open Edit Trek Modal
+  // Open Edit Modal
   const handleEdit = (trek) => {
     setEditMode(true);
     setEditTrek(trek);
   };
 
-  // ✅ Update Trek
+  // Update trek
   const handleUpdate = async () => {
-    const res = await fetch(
-      `http://localhost:5001/api/treks/${editTrek._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({
-          title: editTrek.title,
-          desc: editTrek.desc,
-          img: editTrek.img,
-        }),
-      }
-    );
+    const res = await fetch(`${API_URL}/api/treks/${editTrek._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        title: editTrek.title,
+        desc: editTrek.desc,
+        img: editTrek.img,
+      }),
+    });
 
     if (res.ok) {
       alert("Trek Updated Successfully");
@@ -105,7 +112,7 @@ export default function Trips() {
     <section className="trips-section">
       <h1 className="page-title">Explore Our Travel Packages</h1>
 
-      {/* ✅ Admin Add Trek Form  */}
+      {/* Admin Add Trek Form */}
       {user?.role === "admin" && (
         <div className="admin-add-trek">
           <input
@@ -133,7 +140,7 @@ export default function Trips() {
         </div>
       )}
 
-      {/* ✅ Treks Grid */}
+      {/* Treks Grid */}
       <div className="trips-grid">
         {treks.map((item) => (
           <article className="trip-card" key={item._id}>
@@ -142,17 +149,21 @@ export default function Trips() {
               <h2 className="trip-title">{item.title}</h2>
               <p className="trip-desc">{item.desc}</p>
 
-              {/* ✅ Admin Action Buttons */}
+              {/* Admin Buttons */}
               {user?.role === "admin" && (
                 <>
                   <button onClick={() => handleEdit(item)}>Edit</button>
-                  <button onClick={() => handleDelete(item._id)}>Delete</button>
+                  <button onClick={() => handleDelete(item._id)}>
+                    Delete
+                  </button>
                 </>
               )}
 
-              {/* ✅ Book Button */}
+              {/* User Booking Button */}
               {user?.role === "user" ? (
-                <button onClick={() => handleBook(item._id)}>Book Now</button>
+                <button onClick={() => handleBook(item._id)}>
+                  Book Now
+                </button>
               ) : (
                 <button onClick={() => alert("Please login to book a trek!")}>
                   Book Now
@@ -163,7 +174,7 @@ export default function Trips() {
         ))}
       </div>
 
-      {/* ✅ EDIT MODAL */}
+      {/* EDIT MODAL */}
       {editMode && (
         <div className="edit-modal">
           <div className="edit-box">
