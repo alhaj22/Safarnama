@@ -7,7 +7,7 @@ export default function Dashboard() {
   const [bookings, setBookings] = useState([]);
   const [activeTab, setActiveTab] = useState("users");
 
-  const BASE_URL = "http://localhost:5001/api";
+  const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5001/api";
   const token = localStorage.getItem("token");
 
   useEffect(() => {

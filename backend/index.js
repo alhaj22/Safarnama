@@ -7,7 +7,24 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
 const app = express();
-app.use(cors());
+
+// ✅ CORS — allow localhost for dev and Vercel URL for production
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL, // e.g. https://safarnama.vercel.app
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5001;

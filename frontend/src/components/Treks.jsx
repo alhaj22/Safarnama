@@ -5,8 +5,8 @@ export default function Trips() {
   const [treks, setTreks] = useState([]);
   const [user, setUser] = useState(null);
 
-  // Base API URL from .env
-  const API_URL = import.meta.env.VITE_API_URL;
+  // Base API URL from .env (CRA prefix: REACT_APP_)
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
 
   // Admin input states
   const [newTrek, setNewTrek] = useState({ title: "", desc: "", img: "" });
